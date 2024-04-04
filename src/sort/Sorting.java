@@ -7,17 +7,20 @@ public class Sorting {
     
     private int[] vals;
     private int LEN; 
+    private int count;
 
     public Sorting (int[] inputValues) {
        this.vals = inputValues; 
        this.LEN = inputValues.length;
+       this.count = 0;
     }
 
     public int minIndex(int[] values, int start, int end) {
         int indexMin = start;
 
         for (int i = start + 1; i <= end; i++) {
-            if (values[i] , values[indexMin]) {
+            if (values[i] < values[indexMin]) {
+                count++;
                 indexMin = i;
             }
         }
@@ -28,7 +31,19 @@ public class Sorting {
         int endIndex = LEN - 1;
 
         for(int i = 0; i < endIndex; i++) {
+            int minindex = minIndex(vals, i, endIndex);
+            int temp = vals[i];
+            vals[i] = vals[minindex];
+            vals[minindex] = temp;
         }
+
+        for(int j = 0; j < vals.length; j++){
+            System.out.print(vals[j]);
+            System.out.print(" ");
+        }
+
+        System.out.println("SelectionSort comparisons: " + count);
+
     }
 
     public void merge() {
