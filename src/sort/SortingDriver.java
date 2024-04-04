@@ -1,5 +1,7 @@
 package sort;
 
+import sort.Sorting;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -18,16 +20,24 @@ public class SortingDriver {
             fne.printStackTrace();
         }
         String inputValues = sc.nextLine();
-        String[] vals = inputValues.split(" ");
+        String[] stringVals = inputValues.split(" ");
         sc.close();
+
+        int[] vals = new int[stringVals.length]; 
+        for(int i = 0; i < stringVals.length; i++) {
+            vals[i] = Integer.parseInt(stringVals[i]);
+        }
 
         System.out.println("selection-sort (s) merge-sort (m) heap-sort (h) quick-sort (q) quick-sort-rp (r)");
         System.out.print("Enter the algorithm: ");
 
         userChoice = scan.nextLine();
 
+        Sorting sort = new Sorting(vals);
+
         if(userChoice.equals("s")) {
-            // selection-sort
+            sort.selection();
+            // insert-sort
         } else if (userChoice.equals("m")) {
             // merge-sort
         } else if (userChoice.equals("h")) {
