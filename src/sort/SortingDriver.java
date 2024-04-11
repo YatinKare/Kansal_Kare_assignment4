@@ -39,7 +39,7 @@ public class SortingDriver {
             sort.selection();
             // insert-sort
         } else if (userChoice.equals("m")) {
-            // merge-sort
+            sort.merge();
         } else if (userChoice.equals("h")) {
             // heap-sort
         } else if (userChoice.equals("q")) {
