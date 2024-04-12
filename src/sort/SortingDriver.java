@@ -43,9 +43,9 @@ public class SortingDriver {
         } else if (userChoice.equals("h")) {
             // heap-sort
         } else if (userChoice.equals("q")) {
-            // quicksort fp
+            sort.quickFP();
         } else if (userChoice.equals("r")) {
-            // quicksort rp
+            sort.quickRP();
         }
 
     }

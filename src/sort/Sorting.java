@@ -1,5 +1,6 @@
 package sort;
 
+import java.util.Random;
 public class Sorting {
     // Sorting methods here
     // For each method:
@@ -55,7 +56,6 @@ public class Sorting {
     }
 
     public void mergeSort(int[] a) {
-        System.out.println();
         int len = a.length;
 
         if (len < 2) {
@@ -111,10 +111,72 @@ public class Sorting {
 
     //code citation from https://www.geeksforgeeks.org/implement-quicksort-with-first-element-as-pivot/
     public void quickFP() {
-        
+        quickSort(0, vals.length-1);
+        for (int idx = 0; idx < vals.length; idx++) {
+            System.out.print("" + vals[idx] + " ");
+        }
+        System.out.println("\nThe number of comparisons is: " + count);
+    }
+
+    public void quickSort(int low, int high) {
+        if (low >= high) {
+            return;
+        }
+        int pivot = vals[low];
+        int k = high;
+        for (int i = high; i > low; i--) {
+            count++;
+            if (vals[i] > pivot){
+                int temp = vals[i];
+                vals[i] = vals[k];
+                vals[k] = temp;
+                k-=1;
+            }
+        }
+        int temp = vals[low];
+        vals[low] = vals[k];
+        vals[k] = temp;
+
+        quickSort(low, k-1);
+        quickSort(k+1, high);
     }
 
     public void quickRP() {
+        quickRandomSort(0, vals.length-1);
+        for (int idx = 0; idx < vals.length; idx++) {
+            System.out.print("" + vals[idx] + " ");
+        }
+        System.out.println("\nThe number of comparisons is: " + count);
+    }
+
+    public void quickRandomSort(int low, int high) {
+        if (low >= high) {
+            return;
+        }
+        Random rand = new Random();
+        int idx = low + rand.nextInt(high-low + 1);
+        int pivot = vals[idx];
+
+        int temp = vals[idx];
+        vals[idx] = vals[high];
+        vals[high] = temp;
+
+        int i = low - 1;
         
+        for (int j = low; j < high; j++) {
+            count++;
+            if (vals[j] < pivot){
+                i++;
+                temp = vals[i];
+                vals[i] = vals[j];
+                vals[j] = temp;
+            }
+        }
+        temp = vals[high];
+        vals[high] = vals[i+1];
+        vals[i+1] = temp;
+
+        quickRandomSort(low, i);
+        quickRandomSort(i+2, high);
     }
 }
