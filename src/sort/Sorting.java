@@ -20,8 +20,8 @@ public class Sorting {
         int indexMin = start;
 
         for (int i = start + 1; i <= end; i++) {
+            count++;
             if (values[i] < values[indexMin]) {
-                count++;
                 indexMin = i;
             }
         }
