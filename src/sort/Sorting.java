@@ -104,33 +104,20 @@ public class Sorting {
         }
     }
     
-    private void printHeap(int i, int depth) {
-        if (i < vals.length) {
-            printHeap(2 * i + 2, depth + 1);
-            System.out.format("%" + (depth * 5) + "s%d%n%", "", vals[i]);
-            printHeap(2 * i + 1, depth + 1);
-        }
-    }
-
+    // Code citation: www.programiz.com/dsa/heap-sort
     public void heap() {
         int nonleafnodesindex = (vals.length / 2) - 1;
         for (int i = nonleafnodesindex; i >= 0; i--) {
-            reheap(i);
+            reheap(vals.length, i);
         }
 
-        printHeap(0, 0);
-
-
-
-        for (int z = nonleafnodesindex; z >= 0; z--) {
+        for (int z = vals.length - 1; z >= 0; z--) {
             int temp = vals[0];
             vals[0] = vals[z];
             vals[z] = temp;
 
-            reheap(z);
+            reheap(z, 0);
         }
-
-
 
         for(int j = 0; j < vals.length; j++){
             System.out.print(vals[j]);
@@ -141,16 +128,16 @@ public class Sorting {
 
     }
 
-    public void reheap(int i) {
+    public void reheap(int n, int i) {
         int large = i;
         int left = 2*i + 1;
         int right = 2*i + 2;
 
-        if (left < vals.length && vals[left] > vals[large]) {
+        if (left < n && vals[left] > vals[large]) {
             count++;
             large = left;
         }
-        if (right < vals.length && vals[right] > vals[large]) {
+        if (right < n && vals[right] > vals[large]) {
             count++;
             large = right;
         }
@@ -159,9 +146,8 @@ public class Sorting {
             int temp = vals[i];
             vals[i] = vals[large];
             vals[large] = temp;
-            reheap(large);
+            reheap(n, large);
         }
-        
     }
 
     //code citation from https://www.geeksforgeeks.org/implement-quicksort-with-first-element-as-pivot/
