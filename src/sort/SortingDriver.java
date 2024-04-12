@@ -41,6 +41,7 @@ public class SortingDriver {
         } else if (userChoice.equals("m")) {
             // merge-sort
         } else if (userChoice.equals("h")) {
+            sort.heap();
             // heap-sort
         } else if (userChoice.equals("q")) {
             // quicksort fp
