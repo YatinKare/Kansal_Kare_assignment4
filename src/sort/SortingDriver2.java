@@ -34,6 +34,7 @@ public class SortingDriver2 {
             sort.merge();
         } else if (userChoice.equals("h")) {
             // heap-sort
+            sort.heap();
         } else if (userChoice.equals("q")) {
             sort.quickFP();
         } else if (userChoice.equals("r")) {

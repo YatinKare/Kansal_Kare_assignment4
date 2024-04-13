@@ -31,8 +31,9 @@ public class Sorting {
     public void selection() {
         int endIndex = LEN - 1;
 
+        int minindex = 0;
         for(int i = 0; i < endIndex; i++) {
-            int minindex = minIndex(vals, i, endIndex);
+            minindex = minIndex(vals, i, endIndex);
             int temp = vals[i];
             vals[i] = vals[minindex];
             vals[minindex] = temp;
