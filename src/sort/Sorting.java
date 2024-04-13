@@ -183,6 +183,7 @@ public class Sorting {
         quickSort(k+1, high);
     }
 
+    //code citation from https://www.geeksforgeeks.org/implement-quicksort-with-first-element-as-pivot/
     public void quickRP() {
         quickRandomSort(0, vals.length-1);
         for (int idx = 0; idx < vals.length; idx++) {
